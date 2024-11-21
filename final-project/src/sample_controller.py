@@ -1,5 +1,5 @@
 
-class Controller:
+class :
   
   def __init__(self):
     #setup pygame data
