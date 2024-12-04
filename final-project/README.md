@@ -42,6 +42,7 @@ Preview
 Game
 Score
 Timer
+Tetromino
 -
 
 ## ATP
