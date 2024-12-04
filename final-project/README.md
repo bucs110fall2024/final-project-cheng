@@ -1,8 +1,8 @@
 
 :warning: Everything between << >> needs to be replaced (remove << >> after replacing)
 
-# << Project Title >>
-## CS110 Final Project  << Semester, Year >>
+# Tetris Game
+## CS110 Final Project  Fall, 2024
 
 ## Team Members
 
@@ -37,8 +37,12 @@ Clone of the tetris game that will include features for score tracking, lines ma
 5. Block Preview
 
 ### Classes
-
-- << You should have a list of each of your classes with a description >>
+Controller
+Preview
+Game
+Score
+Timer
+-
 
 ## ATP
 
