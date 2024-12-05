@@ -1,6 +1,3 @@
-
-:warning: Everything between << >> needs to be replaced (remove << >> after replacing)
-
 # Tetris Game
 ## CS110 Final Project  Fall, 2024
 
@@ -79,9 +76,9 @@ Test Description: Verify that the rows clear when completed and the score and li
 1. Start the game.
 2. Play the game by fitting the tetromino blocks together to fill a row.
 3. Keep trying until a single row has been filled.
-4. Verify that this clears the line.
-6. Verify that the score updates.
-7. Verify that the line tracker updates.
+4. Verify that completing a row clears the line.
+6. Verify that the score increases.
+7. Verify that the line tracker updates accordingly.
 
 Expected Outcome: When a row is filled, the row should clear and the score should increase with the line tracker updating accordingly.
 
@@ -95,4 +92,13 @@ Test Description: Verify that the pause key works.
 
 Expected Outcome: In response to the P key, the game should pause and a pause screen should appear. By pressing the P key again, the game should resume.
 
+Test case 5: Preview Box
+Test description: Verify the peview box updates after placing a tetromino block down.
+1. Start the game.
+2. Look at the preview box to the top right of the window.
+3. Note the blocks on it currently.
+4. Press spacebar to instantly drop a tetrimino block.
+5. Look at the preview box again.
+6. Verify that a new block has appeared.
 
+Expected Outcome: The preview box should have a new tetrimino block on display every time the user drops a block.
