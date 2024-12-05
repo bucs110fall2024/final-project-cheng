@@ -60,6 +60,7 @@ Test Steps:
 9. Verify that the tetromino block moves down 1 row.
 10. Press the space bar.
 11. Verify that the tetromino block instantly drops to the bottom and the next block appears.
+
 Expected Outcome: The tetromino block should be able to move left, right, down, or rotate in response to the arrow key inputs and drop in response to the space bar.
 
 Test case 2: Gameover
@@ -70,6 +71,7 @@ Test Description: Verify that the gameover screen appears with option to play ag
 4. Verify that this triggers the gameover screen
 5. Press the R key.
 6. Verify this restarts the game.
+
 Expected Outcome: Once the tetromino blocks reach the top of the game grid, the gameover screen should appear and the game restarts in response to the R key.
 
 Test case 3: Row clear, score and line tracker functionality
@@ -80,6 +82,7 @@ Test Description: Verify that the rows clear when completed and the score and li
 4. Verify that this clears the line.
 6. Verify that the score updates.
 7. Verify that the line tracker updates.
+
 Expected Outcome: When a row is filled, the row should clear and the score should increase with the line tracker updating accordingly.
 
 Test case 4: Pause Test
@@ -89,6 +92,7 @@ Test Description: Verify that the pause key works.
 3. Verify that the game has paused and the pause screen appears.
 4. Press the P key again.
 6. Verify that the game resumes from where you left off.
+
 Expected Outcome: In response to the P key, the game should pause and a pause screen should appear. By pressing the P key again, the game should resume.
 
 
