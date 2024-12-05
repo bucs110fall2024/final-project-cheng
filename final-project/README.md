@@ -82,6 +82,13 @@ Test Description: Verify that the rows clear when completed and the score and li
 7. Verify that the line tracker updates.
 Expected Outcome: When a row is filled, the row should clear and the score should increase with the line tracker updating accordingly.
 
-
+Test case 4: Pause Test
+Test Description: Verify that the pause key works.
+1. Start the game.
+2. Press the P key.
+3. Verify that the game has paused and the pause screen appears.
+4. Press the P key again.
+6. Verify that the game resumes from where you left off.
+Expected Outcome: In response to the P key, the game should pause and a pause screen should appear. By pressing the P key again, the game should resume.
 
 
