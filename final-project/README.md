@@ -34,13 +34,19 @@ Clone of the tetris game that will include features for score tracking, lines ma
 5. Block Preview
 
 ### Classes
-Controller - 
-Preview -
-Game -
-Score -
-Timer -
-Tetromino -
-Block -
+Controller - Main controller for managing the game's flow, including setting up the game window, handling input events, updating the game state, and rendering various components such as the score, preview, and game. It also handles game state management, such as pausing and restarting the game.
+
+Preview - Responsible for displaying the upcoming Tetromino blocks in the sidebar of the Tetris game.
+
+Game - Represents the core mechanics of the Tetris game, including the game field, Tetrominoes, scoring, timers, and handling user inputs. It also manages the flow of the game, such as checking for game-over conditions, moving Tetrominoes, and drawing the game screen.
+
+Score - Designed to display the current score, level, and lines completed on the sidebar. It handles rendering text and updating the sidebar during the game.
+
+Timer - Designed to manage time-based events in the project. It sets a timer that triggers an action either once or repeatedly after a specified duration. The class provides methods to start, stop, and update the timer, while also handling optional callback functions that are executed when the timer expires.
+
+Tetromino - Represents a shape made up of multiple blocks in the game. Each Tetromino has a specific shape, color, and behavior. The class defines methods for moving the Tetromino, rotating it, checking for collisions, and placing it on the game field.
+
+Block - Represents a single square block within a Tetromino. It has methods for handling its position, rotation, and collisions.
 -
 
 ## ATP
