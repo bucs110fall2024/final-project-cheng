@@ -72,7 +72,7 @@ Test Description: Verify that the gameover screen appears with option to play ag
 6. Verify this restarts the game.
 Expected Outcome: Once the tetromino blocks reach the top of the game grid, the gameover screen should appear and the game restarts in response to the R key.
 
-Test case 2: Row clear, score and line tracker functionality
+Test case 3: Row clear, score and line tracker functionality
 Test Description: Verify that the rows clear when completed and the score and line tracker update accordingly.
 1. Start the game.
 2. Play the game by fitting the tetromino blocks together to fill a row.
