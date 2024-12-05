@@ -3,8 +3,9 @@ from src.game import Game
 from src.preview import Preview
 from src.score import Score
 from src.timer import Timer
-from src.controller import Controller
 from src.tetrominos import TETROMINOS
+from src.controller import Controller
+
 from random import choice
 
 # Constants for the Tetris game

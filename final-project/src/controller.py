@@ -72,7 +72,7 @@ class Controller:
         self.paused = False
 
         # Font for the pause menu
-        self.font = pygame.font.Font(join('final-project', 'assets', 'NotoSans-Regular.ttf'), 40)
+        self.font = pygame.font.Font(join('final-project', 'assets','font','NotoSans-Regular.ttf'), 40)
 
     def update_score(self, lines, score, level):
         self.score.lines = lines
@@ -94,6 +94,11 @@ class Controller:
         
         self.display_surface.blit(pause_text, pause_rect)
         self.display_surface.blit(resume_text, resume_rect)
+    
+    def restart_game(self):
+        """Restart the game by reinitializing components."""
+        self.game = Game(self.get_next_shape, self.update_score)
+        self.next_shapes = [choice(list(TETROMINOS.keys())) for shape in range(3)]
 
     def run(self):
         while True:
@@ -103,11 +108,15 @@ class Controller:
                     exit()
                 elif event.type == pygame.KEYDOWN and event.key == pygame.K_p:
                     self.paused = not self.paused  # Toggle pause state
+                if self.game.game_over and event.type == pygame.KEYDOWN and event.key == pygame.K_r:
+                    self.restart_game()
 
             if self.paused:
                 # Display pause menu
                 self.display_surface.fill(GRAY)
                 self.draw_pause_menu()
+            elif self.game.game_over:
+                self.game.display_game_over()
             else:
                 # Normal game rendering
                 self.display_surface.fill(GRAY)
@@ -116,6 +125,7 @@ class Controller:
                 self.game.run()
                 self.score.run()
                 self.preview.run(self.next_shapes)
+
 
             # Update the screen
             pygame.display.update()

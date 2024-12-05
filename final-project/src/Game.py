@@ -1,5 +1,6 @@
 # src/game.py
 import pygame
+from os.path import join
 from .timer import Timer
 from .tetrominos import Tetromino, TETROMINOS, Block
 from random import choice
@@ -56,6 +57,10 @@ class Game:
 		self.get_next_shape = get_next_shape
 		self.update_score = update_score
 
+		# gameover
+		self.game_over = False
+
+
 		# lines 
 		self.line_surface = self.surface.copy()
 		self.line_surface.fill((0,255,0))
@@ -103,7 +108,8 @@ class Game:
 	def check_game_over(self):
 		for block in self.tetromino.blocks:
 			if block.pos.y < 0:
-				exit()
+				self.game_over = True
+				return
 
 	def create_new_tetromino(self):
 		self.check_game_over()
@@ -194,7 +200,24 @@ class Game:
 			# update score
 			self.calculate_score(len(delete_rows))
 
+	def display_game_over(self):
+		font = pygame.font.Font(join('final-project','assets','font','NotoSans-Regular.ttf'), 50)  
+		text_surface = font.render("GAME OVER", True, "red")
+		restart_surface = font.render("Press R to Restart", True, "white")
+			
+		text_rect = text_surface.get_rect(center=(WINDOW_WIDTH // 2, WINDOW_HEIGHT // 3))
+		restart_rect = restart_surface.get_rect(center=(WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2))
+			
+		self.display_surface.fill(GRAY)
+		self.display_surface.blit(text_surface, text_rect)
+		self.display_surface.blit(restart_surface, restart_rect)
+		pygame.display.update()
+
 	def run(self):
+
+		if self.game_over:
+			self.display_game_over()
+			return
 
 		# update
 		self.input()
@@ -208,3 +231,5 @@ class Game:
 		self.draw_grid()
 		self.display_surface.blit(self.surface, (PADDING,PADDING))
 		pygame.draw.rect(self.display_surface, LINE_COLOR, self.rect, 2, 2)
+
+	

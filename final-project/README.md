@@ -31,7 +31,7 @@ Clone of the tetris game that will include features for score tracking, lines ma
 ### Features
 
 1. Pause Menu
-2. Game Over Screen
+2. Gameover Screen
 3. Score Tracker
 4. Line Counter
 5. Block Preview
@@ -46,9 +46,42 @@ Tetromino
 -
 
 ## ATP
+Test Case 1: Tetromino movement/rotation/drop
+Test Description: Verify that the tetromino block moves left, right, down, drops and rotates as expected.
+Test Steps:
+1. Start the game.
+2. Press the left arrow key.
+3. Verify that the tetromino block moves left.
+4. Press the right arrow key.
+5. Verify that the tetromino block moves right.
+6. Press the up arrow key a few times.
+7. Verify that the tetromino block can rotate as desired.
+8. Press the down arrow key.
+9. Verify that the tetromino block moves down 1 row.
+10. Press the space bar.
+11. Verify that the tetromino block instantly drops to the bottom and the next block appears.
+Expected Outcome: The tetromino block should be able to move left, right, down, or rotate in response to the arrow key inputs and drop in response to the space bar.
 
-| Step                 |Procedure             |Expected Results                   |
-|----------------------|:--------------------:|----------------------------------:|
-|  1                   | Run Counter Program  |GUI window appears with count = 0  |
-|  2                   | click count button   | display changes to count = 1      |
-etc...
+Test case 2: Gameover
+Test Description: Verify that the gameover screen appears with option to play again
+1. Start the game.
+2. Continously press the spacebar to drop tetromino blocks.
+3. Repeat until the tetromino blocks stack to the top.
+4. Verify that this triggers the gameover screen
+5. Press the R key.
+6. Verify this restarts the game.
+Expected Outcome: Once the tetromino blocks reach the top of the game grid, the gameover screen should appear and the game restarts in response to the R key.
+
+Test case 2: Row clear, score and line tracker functionality
+Test Description: Verify that the rows clear when completed and the score and line tracker update accordingly.
+1. Start the game.
+2. Play the game by fitting the tetromino blocks together to fill a row.
+3. Keep trying until a single row has been filled.
+4. Verify that this clears the line.
+6. Verify that the score updates.
+7. Verify that the line tracker updates.
+Expected Outcome: When a row is filled, the row should clear and the score should increase with the line tracker updating accordingly.
+
+
+
+

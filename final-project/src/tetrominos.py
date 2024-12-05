@@ -105,7 +105,7 @@ class Tetromino:
 
 		except Exception as e:
 			# Log the issue for debugging
-			print(f"Error during instant drop: {e}")
+			print(f"Game Over {e}")
 
 	# rotate
 	def rotate(self):
