@@ -1,4 +1,3 @@
-# src/timer.py
 from pygame.time import get_ticks
 
 class Timer:
