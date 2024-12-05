@@ -12,6 +12,15 @@ from random import choice
 
 class Controller:
     def __init__(self):
+        """
+    Initializes the main game controller, setting up components, state, and the game window.
+
+    Args:
+        None
+
+    Returns:
+        None
+    """
         # General setup
         pygame.init()
         self.display_surface = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
@@ -33,17 +42,45 @@ class Controller:
         self.font = pygame.font.Font(join('final-project', 'assets','font','NotoSans-Regular.ttf'), 40)
 
     def update_score(self, lines, score, level):
+        """
+    Updates the score, level, and lines displayed in the score component.
+
+    Args:
+        lines (int): The number of lines cleared.
+        score (int): The current score.
+        level (int): The current level.
+
+    Returns:
+        None
+    """
         self.score.lines = lines
         self.score.score = score
         self.score.level = level
 
     def get_next_shape(self):
+        """
+    Retrieves the next Tetromino shape and updates the preview queue.
+
+    Args:
+        None
+
+    Returns:
+        str: The identifier for the next Tetromino shape.
+    """
         next_shape = self.next_shapes.pop(0)
         self.next_shapes.append(choice(list(TETROMINOS.keys())))
         return next_shape
 
     def draw_pause_menu(self):
-        """Display the pause menu."""
+        """
+    Displays the pause menu with instructions to resume the game.
+
+    Args:
+        None
+
+    Returns:
+        None
+    """
         pause_text = self.font.render("PAUSED", True, "white")
         resume_text = self.font.render("Press 'P' to Resume", True, "white")
         
@@ -54,11 +91,28 @@ class Controller:
         self.display_surface.blit(resume_text, resume_rect)
     
     def restart_game(self):
-        """Restart the game by reinitializing components."""
+        """
+    Restarts the game by reinitializing the game and preview components.
+
+    Args:
+        None
+
+    Returns:
+        None
+    """
         self.game = Game(self.get_next_shape, self.update_score)
         self.next_shapes = [choice(list(TETROMINOS.keys())) for shape in range(3)]
 
     def run(self):
+        """
+    Runs the main game loop, managing events, rendering components, and updating the game state.
+
+    Args:
+        None
+
+    Returns:
+        None
+    """
         while True:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:

@@ -8,6 +8,16 @@ from pygame.time import get_ticks
 
 class Game:
 	def __init__(self, get_next_shape, update_score):
+		"""
+    Initializes the Tetris game instance, setting up the game window, field, timers, and Tetrominoes.
+
+    Args:
+        get_next_shape (function): Function to fetch the next Tetromino shape.
+        update_score (function): Function to update the player's score.
+
+    Returns:
+        None
+    """
 		pygame.init()
 		self.display_surface = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 		self.clock = pygame.time.Clock()
@@ -60,6 +70,15 @@ class Game:
 		self.current_lines = 0
 
 	def calculate_score(self, num_lines):
+		"""
+    Updates the score, level, and speed based on the number of cleared lines.
+
+    Args:
+        num_lines (int): The number of lines cleared in a single move.
+
+    Returns:
+        None
+    """
 		self.current_lines += num_lines
 		self.current_score += SCORE_DATA[num_lines] * self.current_level
 
@@ -72,12 +91,30 @@ class Game:
 		self.update_score(self.current_lines, self.current_score, self.current_level)
 
 	def check_game_over(self):
+		"""
+    Checks if the game is over by detecting if any block is above the visible field.
+
+    Args:
+        None
+
+    Returns:
+        None
+    """
 		for block in self.tetromino.blocks:
 			if block.pos.y < 0:
 				self.game_over = True
 				return
 
 	def create_new_tetromino(self):
+		"""
+    Replaces the current Tetromino with a new one and processes game state.
+
+    Args:
+        None
+
+    Returns:
+        None
+    """
 		self.check_game_over()
 		self.check_finished_rows()
 		self.tetromino = Tetromino(
@@ -87,14 +124,40 @@ class Game:
 			self.field_data)
 
 	def timer_update(self):
+		"""
+    Updates all active timers, triggering their respective events.
+
+    Args:
+        None
+
+    Returns:
+        None
+    """
 		for timer in self.timers.values():
 			timer.update()
 
 	def move_down(self):
+		"""
+    Moves the current Tetromino down by one unit.
+
+    Args:
+        None
+
+    Returns:
+        None
+    """
 		self.tetromino.move_down()
 
 	def draw_grid(self):
+		"""
+    Draws the grid overlay on the game field.
 
+    Args:
+        None
+
+    Returns:
+        None
+    """
 		for col in range(1, COLUMNS):
 			x = col * BLOCK_SIZE
 			pygame.draw.line(self.line_surface, LINE_COLOR, (x,0), (x,self.surface.get_height()), 1)
@@ -106,6 +169,15 @@ class Game:
 		self.surface.blit(self.line_surface, (0,0))
 
 	def input(self):
+		"""
+    Handles player input for movement, rotation, and instant drop.
+
+    Args:
+        None
+
+    Returns:
+        None
+    """
 		keys = pygame.key.get_pressed()
 
 		# checking horizontal movement
@@ -138,7 +210,15 @@ class Game:
 			self.timers['drop'].activate()
 
 	def check_finished_rows(self):
+		"""
+    Checks and clears any fully completed rows, updates the score, and moves remaining blocks down.
 
+    Args:
+        None
+
+    Returns:
+        None
+    """
 		# get the full row indexes 
 		delete_rows = []
 		for i, row in enumerate(self.field_data):
@@ -167,6 +247,15 @@ class Game:
 			self.calculate_score(len(delete_rows))
 
 	def display_game_over(self):
+		"""
+    Displays the game over screen with restart instructions.
+
+    Args:
+        None
+
+    Returns:
+        None
+    """
 		font = pygame.font.Font(join('final-project','assets','font','NotoSans-Regular.ttf'), 50)  
 		text_surface = font.render("GAME OVER", True, "red")
 		restart_surface = font.render("Press R to Restart", True, "white")
@@ -180,7 +269,15 @@ class Game:
 		pygame.display.update()
 
 	def run(self):
+		"""
+    Runs the main game loop, updating the game state and drawing the current frame.
 
+    Args:
+        None
+
+    Returns:
+        None
+    """
 		if self.game_over:
 			self.display_game_over()
 			return

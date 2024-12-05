@@ -34,12 +34,13 @@ Clone of the tetris game that will include features for score tracking, lines ma
 5. Block Preview
 
 ### Classes
-Controller
-Preview
-Game
-Score
-Timer
-Tetromino
+Controller - 
+Preview -
+Game -
+Score -
+Timer -
+Tetromino -
+Block -
 -
 
 ## ATP

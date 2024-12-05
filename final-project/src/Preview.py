@@ -1,5 +1,4 @@
 import pygame
-import os
 from pygame.image import load
 from os.path import join
 from .settings import *
@@ -7,7 +6,15 @@ from .tetrominos import TETROMINOS
 
 class Preview:
 	def __init__(self):
-		
+		"""
+    Initializes the preview sidebar to display upcoming Tetromino shapes.
+
+    Args:
+        None
+
+    Returns:
+        None
+    """
 		# general
 		self.display_surface = pygame.display.get_surface()
 		self.surface = pygame.Surface((SIDEBAR_WIDTH, GAME_HEIGHT * PREVIEW_HEIGHT))
@@ -20,6 +27,15 @@ class Preview:
 		self.increment_height = self.surface.get_height() / 3
 
 	def display_pieces(self, shapes):
+		"""
+    Displays the upcoming Tetromino shapes in the preview sidebar.
+
+    Args:
+        shapes (list): A list of strings representing the shapes to display.
+
+    Returns:
+        None
+    """
 		for i, shape in enumerate(shapes):
 			shape_surface = self.shape_surfaces[shape]
 			x = self.surface.get_width() / 2
@@ -28,6 +44,15 @@ class Preview:
 			self.surface.blit(shape_surface,rect)
 
 	def run(self, next_shapes):
+		"""
+    Updates and renders the preview sidebar with the upcoming Tetromino shapes.
+
+    Args:
+        next_shapes (list): A list of strings representing the next Tetromino shapes.
+
+    Returns:
+        None
+    """
 		self.surface.fill(GRAY)
 		self.display_pieces(next_shapes)
 		self.display_surface.blit(self.surface, self.rect)
